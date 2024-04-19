@@ -12,6 +12,27 @@ body {
 
 
 .container {
-    width: 300px;
+    width: 50rem;
+    height: 20rem;
     background: white;
+}
+
+
+#character {
+    transition: transform 0.2s;
+    margin: 5rem;
+    width: 5px;
+    height: 5px;
+    padding: 0.5rem;
+    background-color: red;
+}
+
+#enemy {
+    transition: transform 0.2s;
+    padding: 0.5rem;
+    margin: 5rem;
+    width: 5px;
+    height: 5px;
+    padding: 0.5rem;
+    background-color: red;
 }
