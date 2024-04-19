@@ -1,4 +1,4 @@
-class Character {
+export class Character {
     constructor(name, health, damage) {
         // Atributos
         this.name = name;
@@ -6,7 +6,7 @@ class Character {
         this.maxhealth = health;
         this.damage = damage;
     }
-    
+
     // Verifica si el personaje esta vivo
     isAlive() {
         return this.health > 0;
