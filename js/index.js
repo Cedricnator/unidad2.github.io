@@ -1,5 +1,5 @@
   import {
-      Character
+    Character
   } from './character.js'
 
   //Creación de personajes
@@ -47,62 +47,32 @@
   const character = document.getElementById("character");
   const nemesis = document.getElementById("enemy");
 
-//   console.log(container.style.width);
+  const coords1 = [0, 0]; // x, y
+  const coords2 = [0, 0]; // x, y
 
-  let x1 = 0,
-      y1 = 0;
-  let x2 = 0,
-      y2 = 0;
+  const eventsCharacterKey = ["ArrowRight", "ArrowLeft", "ArrowUp", "ArrowDown"];
+  const eventsNemesisKey = ["d", "a", "w", "s"];
 
-  const moveCharacter = () => {
+  const moveCharacterByCoords = (coords, events, character) => {
       document.addEventListener("keydown", function (event) {
-          switch (event.key) {
-              case "ArrowRight":
-                  x1 += 100;
-                  break;
-              case "ArrowLeft":
-                  x1 -= 100;
-                  break;
-              case "ArrowUp":
-                  y1 += 100;
-                  break;
-              case "ArrowDown":
-                  y1 -= 100;
-                  break;
-          }
-          character.style.transform = `translate(${x1}px, ${y1}px)`;
-      });
+        const index = events.indexOf(event.key);
+
+        if (index !== -1) {
+            if (index === 0) coords[0] += 100;
+            else if (index === 1) coords[0] -= 100;
+            else if (index === 2) coords[1] -= 100;
+            else if (index === 3) coords[1] += 100;
+            character.style.transform = `translate(${coords[0]}px, ${coords[1]}px)`;
+        }
+      
+    });
   }
 
+  // Character
+  moveCharacterByCoords(coords1, eventsCharacterKey, character);
 
-
-  const moveNemesis = () => {
-      document.addEventListener("keydown", function (event) {
-          switch (event.key) {
-              case "d":
-                  x2 += 100;
-                  break;
-              case "a":
-                  x2 -= 100;
-                  break;
-              case "w":
-                  y2 += 100;
-                  break;
-              case "s":
-                  y2 -= 100;
-                  break;
-          }
-          nemesis.style.transform = `translate(${x2}px, ${y2}px)`;
-      });
-  }
-
-  moveCharacter();
-  moveNemesis();
-
-
-
-
-
+  // Nemesis
+  moveCharacterByCoords(coords2, eventsNemesisKey, nemesis);
 
 
   // Se lanza el juego
