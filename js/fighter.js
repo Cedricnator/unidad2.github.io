@@ -1,27 +1,28 @@
 export class Fighter {
-    constructor(name, x, y){
+    constructor(name, life, x, y) {
         this.name = name;
+        this.life = life;
         this.x = x;
         this.y = y;
     }
 
-    setDocumentById(){
+    setDocumentById() {
         document.getElementById(this.name);
     }
 
-    moveRight(){
+    moveRight() {
         this.x += 1;
     }
 
-    moveLeft(){
+    moveLeft() {
         this.x -= 1;
     }
 
-    moveUp(){
+    moveUp() {
         this.y += 1;
     }
 
-    moveDown(){
+    moveDown() {
         this.y -= 1;
     }
-  }
+}

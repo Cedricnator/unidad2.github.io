@@ -1,18 +1,15 @@
 body {
-
     font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
     line-height: 1.5;
     font-weight: 400;
-
-    
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+    color-scheme: light dark;
+    color: rgba(255, 255, 255, 0.87);
+    background-color: #242424;
 }
 
 
 .container {
-    width: 50rem;
+    width: 74.5rem;
     height: 20rem;
     background: white;
 }
@@ -35,4 +32,40 @@ body {
     height: 5px;
     padding: 0.5rem;
     background-color: red;
+}
+
+.profile-with-health-bar {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+    gap: 1.1rem;
+}
+
+.characters-info {
+    display: flex;
+    justify-content: space-between;
+    margin-left: 3rem;
+    margin-right: 3rem;
+}
+
+.center-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+
+/* Estilos para el elemento progress con id "characterHealth" */
+#characterHealth {
+    /* Cambia el color de fondo */
+    color: #4CAF50;
+    background-color: #f3f3f3;
+}
+
+/* Estilos para el elemento progress con id "enemyHealth" */
+#enemyHealth {
+    /* Cambia el color de fondo */
+    color: red;
+    background-color: #f3f3f3;
 }

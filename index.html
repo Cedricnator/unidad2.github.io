@@ -9,9 +9,24 @@
 <body>
     <h1>Welcome</h1>
 
-    <div class="container">
-        <div id="character">a</div>
-        <div id="enemy">b</div>
+    <div class="characters-info">
+        <div class="profile-with-health-bar">
+            <img src="./public/images/character.png" alt="" width="105" height="155">
+             <progress value="100" max="100" id="characterHealth"></progress>
+        </div>
+
+        <div class="profile-with-health-bar">
+            <progress value="100" max="100" id="enemyHealth" id="nemesisHealth"></progress>
+            <img src="./public/images/nemesis.png" alt="" width="105" height="155">
+        </div>
+
+    </div>
+   
+    <div class="center-container">
+        <div class="container" id="ring">
+            <div id="character">a</div>
+            <div id="enemy">b</div>
+        </div>
     </div>
 
     <script type="module" src="./js/index.js"></script>
