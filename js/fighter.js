@@ -1,28 +1,25 @@
 export class Fighter {
-    constructor(name, life, x, y) {
+    constructor(name, life) {
         this.name = name;
         this.life = life;
-        this.x = x;
-        this.y = y;
+        this.id = "";
+    }
+
+    atack(target) {
+        const damage = Math.floor(Math.random() * (10 - 5 + 1)) + 5;
+        console.log(`${this.name} deals ${damage} DMG to ${target.name}`);
+        target.life -= damage;
     }
 
     setDocumentById() {
-        document.getElementById(this.name);
+        this.id = document.getElementById(this.name);
     }
 
-    moveRight() {
-        this.x += 1;
+    getId() {
+        return this.id;
     }
 
-    moveLeft() {
-        this.x -= 1;
-    }
-
-    moveUp() {
-        this.y += 1;
-    }
-
-    moveDown() {
-        this.y -= 1;
+    getHealth(){
+        return this.life;
     }
 }
