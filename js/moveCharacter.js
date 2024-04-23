@@ -7,14 +7,26 @@ export const moveCharacterByCoords = (coords, events, character, container) => {
     
             const characterRect = character.getBoundingClientRect();
             const containerRect = container.getBoundingClientRect();
-    
-            if (index === 0 && characterRect.right + 20 <= containerRect.right - characterRect.width) newX += 20;
-            else if (index === 1 && characterRect.left - 20 >= containerRect.left) newX -= 20;
-            else if (index === 2 && characterRect.top - 20 >= containerRect.top) newY -= 20;
-            else if (index === 3 && characterRect.bottom + 20 <= containerRect.bottom - characterRect.height) newY += 20;
-    
-            coords[0] = newX;
-            coords[1] = newY;
+
+            const maxRight = containerRect.right - characterRect.width;
+            const maxLeft = containerRect.left;
+            const maxTop = containerRect.top;
+            const maxBottom = containerRect.bottom - characterRect.height;
+
+            if (index === 0 && characterRect.right <= maxRight ) newX += 20;
+            else if (index === 1 && characterRect.left  >= maxLeft) newX -= 20;
+            else if (index === 2 && characterRect.top>= maxTop) newY -= 20;
+            else if (index === 3 && characterRect.bottom  <= maxBottom) newY += 20;
+            
+            if( newX <= maxLeft && newX <= maxRight) {
+                coords[0] = newX;
+            }
+
+            if( newY <= maxTop && newY <= maxBottom) {
+                coords[1] = newY;
+            }
+            
+
             character.style.transform = `translate(${coords[0]}px, ${coords[1]}px)`;
         }
     });
