@@ -8,7 +8,6 @@ export function moveBall(e, ball, stage){
     const $stage     = d.querySelector(stage)
     const limitBall  = $ball.getBoundingClientRect();
     const limitStage = $stage.getBoundingClientRect(); 
-    console.log(e)
 
     switch( e.keyCode ){
         case 65:
@@ -38,66 +37,56 @@ export function moveBall(e, ball, stage){
     move($ball, x, y);
 }   
 
-const move = (ball, x, y) => {
-    ball.style.transform = `translate(${ x * 10 }px, ${ y * 10 }px)`;
-}
 
 export const moveBall2 = (e, ball2, stage) => {
-    const $ball2      = d.querySelector(ball2)
+    const $ball2     = d.querySelector(ball2)
     const $stage     = d.querySelector(stage)
     const limitBall  = $ball2.getBoundingClientRect();
     const limitStage = $stage.getBoundingClientRect(); 
-
+    
     switch(e.key){
         case "ArrowLeft":
             if( limitBall.left > limitStage.left){
                 e.preventDefault();
                 x2--
             };
-        break;
-
+            break;
         case "ArrowRight":
             if( limitBall.right < limitStage.right){
                 e.preventDefault();
                 x2++
             };
-        break;
-    
+            break;
         case "ArrowUp":
             if( limitBall.top > limitStage.top){
                 e.preventDefault();
                 y2--
             };
-        break;
-
+            break;
         case "ArrowDown":
             if( limitBall.bottom < limitStage.bottom){
                 e.preventDefault();
                 y2++
             };
-        break;
+            break;
         default:
             break;
     }
     move($ball2, x2, y2);
 }
 
+export function attackIfClose(ball1, ball2) {
+    const $ball1 = d.querySelector(ball1);
+    const $ball2 = d.querySelector(ball2);
+    const rect1 = $ball1.getBoundingClientRect();
+    const rect2 = $ball2.getBoundingClientRect();
 
-export function shortcuts(e){
-    // console.log(e.type);
-    // console.log(e.key)
-    // console.log(e.keyCode)
+    const dx = rect1.left - rect2.left;
+    const dy = rect1.top - rect2.top;
+    const distance = Math.sqrt(dx * dx + dy * dy);
+    return distance < 80
+}
 
-    if( e.key === "a" && e.altKey){
-        alert("haz landado una alertacon el teclado")
-    }
-
-    if (e.key === "C" && e.altKey){
-        confirm("Haz lanzado una confirmacion con el teclado")
-    }
-
-    if(e.key === "p" && e.altKey){
-        prompt("Haz lanzado un aviso con el teclado")
-    }
-
+const move = (ball, x, y) => {
+    ball.style.transform = `translate(${ x * 10 }px, ${ y * 10 }px)`;
 }
