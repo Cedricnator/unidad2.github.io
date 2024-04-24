@@ -1,10 +1,10 @@
- //   import { Character } from './character.js'
+ //   import { Fighter } from './character.js'
 
  
  
  //Creación de personajes
-//   const hero = new Character("Heroe", 100, 110);
-//   const enemy = new Character("Limo", 500, 40);
+//   const hero = new Fighter("Heroe", 100, 110);
+//   const enemy = new Fighter("Limo", 500, 40);
 
 //   let gameOver = false;
 

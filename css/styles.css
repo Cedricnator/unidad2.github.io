@@ -9,9 +9,11 @@ body {
 
 
 .container {
-    width: 74.5rem;
-    height: 20rem;
     background: white;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 
