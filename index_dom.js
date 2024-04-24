@@ -7,7 +7,6 @@ const eventsNemesisKey   = ["a", "d", "w", "s"];
 const character = new Fighter("fighter", 100, 0, 0, 10);
 const nemesis   = new Fighter("nemesis", 100, 0, 0, 10);
 
-
 document.addEventListener("keydown", (e) => {
     shortcuts(e);
     keysPressed[e.key] = true;
@@ -17,18 +16,21 @@ document.addEventListener("keyup", (e) => {
     keysPressed[e.key] = false;
 });
 
-setInterval(() => {
-    eventsCharacterKey.forEach((key, index) => {
+const move = () => {
+    eventsCharacterKey.forEach((key) => {
         if (keysPressed[key]) {
             moveBall({ key }, ".ball", ".stage", eventsCharacterKey);
         }
     });
-    eventsNemesisKey.forEach((key, index) => {
+    eventsNemesisKey.forEach((key) => {
         if (keysPressed[key]) {
             moveBall({ key }, ".ball2", ".stage", eventsNemesisKey);
         }
     });
-}, 1000 / 60); // 60 veces por segundo
+    requestAnimationFrame(move);
+};
+
+move();
 
 
 document.addEventListener("keydown", function (event) {

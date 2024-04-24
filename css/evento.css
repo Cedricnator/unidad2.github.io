@@ -27,15 +27,25 @@ body {
   box-sizing: inherit;
 }
 
+nav {
+    text-align: center;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: var(--second-color);
+    color: white;
+    text-decoration: solid;
+    font-weight: bolder;
+    font-style: oblique;
+}
+
 
 .section {
-    padding: 2rem;
-    padding-top: 4rem;
+    padding: 1rem;
+    padding-top: 1rem;
     margin-left: auto;
     margin-right: auto;
     width: 100%;
     max-width: var(--container-width);
-    min-height: 100vh;
     text-align: center;
 }
 
