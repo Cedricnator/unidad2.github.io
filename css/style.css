@@ -1,0 +1,31 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+header{
+
+    background: blue;
+    color: white;
+    padding: 20px;
+}
+
+body{
+    background: greenyellow;
+}
+
+img{
+    width: 15%;
+}
+
+.personaje1{
+
+    transition: .5s;
+}
+
+.personaje2{
+
+    transition: .5s;
+    float: right;
+
+}
