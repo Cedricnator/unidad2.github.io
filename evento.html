@@ -5,15 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="./css/evento.css">
-
 </head>
 <body>
     <section id="seccion2" class="section" data-scroll-spy>
-        <h2>Eventos del teclado</h2>
+
+        <div class="characters-info">
+            <div class="profile-with-health-bar">
+                <img src="./public/images/character.png" alt="" width="105" height="155">
+                 <progress value="100" max="100" id="characterHealth"></progress>
+            </div>
+    
+            <div class="profile-with-health-bar">
+                <progress value="100" max="100" id="enemyHealth" id="nemesisHealth"></progress>
+                <img src="./public/images/nemesis.png" alt="" width="105" height="155">
+            </div>
+        </div>
+
         <article class="stage">
             <div class="ball"></div>
+            <div class="ball2"></div>
         </article>
-
+        
     </section>
     <script type="module" src="index_dom.js"></script>
 </body>

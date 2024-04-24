@@ -1,41 +1,46 @@
 const d = document;
 let x = 0, y = 0;
 
+export function moveBall(e, ball, stage, eventsKey){
 
-export function moveBall(e, ball, stage){
-    const $ball = d.querySelector(ball)
-    const $stage = d.querySelector(stage)
-    const limitBall = $ball.getBoundingClientRect();
-    const limitStage = $stage.getBoundingClientRect();    
+    const $ball      = d.querySelector(ball)
+    const $stage     = d.querySelector(stage)
+    const limitBall  = $ball.getBoundingClientRect();
+    const limitStage = $stage.getBoundingClientRect(); 
+ 
+    const index = eventsKey.indexOf(e.key);
 
-    console.log({limitBall, limitStage})
-    
-    const move = (direction) => {
-        $ball.style.transform = `translate(${ x * 10 }px, ${ y * 10 }px)`;
-    }
-    
-    switch( e.keyCode ){
-        case 65:
-            e.preventDefault();
-            if( limitBall.left > limitStage.left) x--;
+    switch( index ){
+        case 0:
+            if( limitBall.left > limitStage.left){
+                x--
+            };
             break;
-        case 68:
-            e.preventDefault();
-            if( limitBall.right < limitStage.right) x++;
+        case 1:
+            if( limitBall.right < limitStage.right){
+                x++
+            };
             break;
-        case 87:
-            e.preventDefault();
-            if(limitBall.top > limitStage.top) y--;
+        case 2:
+            if(limitBall.top > limitStage.top){
+                y--
+            };
             break;
-        case 83:
-            e.preventDefault();
-            if(limitBall.bottom < limitStage.bottom) y++;
+        case 3:
+            if(limitBall.bottom < limitStage.bottom){
+                y++
+            };
             break;
         default:
             break;
     }
+    move($ball);
+}
+
+const move = ($ball) => {
     $ball.style.transform = `translate(${ x * 10 }px, ${ y * 10 }px)`;
 }
+
 
 export function shortcuts(e){
     // console.log(e.type);

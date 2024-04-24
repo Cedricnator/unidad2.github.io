@@ -59,7 +59,7 @@ export class Fighter {
         return this.radius;
     }
 
-    move(events, container){
+    move(events){
         let movingRight = false;
         let movingLeft  = false;
         let movingUp    = false;
