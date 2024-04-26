@@ -10,8 +10,9 @@ export function updateBorderColor(elementClass, color) {
 }
 
 // Actualizar la barra de vida en la interfaz
-export function updateHealth(elementId, health) {
-  document.getElementById(elementId).value = health;
+export function updateHealth(progressElementId, health, hpValueElementId) {
+  document.getElementById(progressElementId).value = health;
+  document.getElementById(hpValueElementId).textContent = health;
 }
 
 // Agregar y remover una clase a un elemento

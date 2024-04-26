@@ -13,12 +13,18 @@
         <div class="characters-info">
             <div class="profile-with-health-bar">
                 <img src="./public/images/character.png" alt="" width="105" height="155" id="characterimg">
-                <progress value="300" max="300" id="characterHealth"></progress>
+                <div id="enemy-health-container">
+                    <div id="character-hp">HP: <span id="character-hp-value"></span></div>
+                    <progress value="300" max="300" id="characterHealth"></progress>
+                </div>
             </div>
     
             <div class="profile-with-health-bar">
-                <progress value="300" max="300" id="enemyHealth" id="nemesisHealth"></progress>
-                <img src="./public/images/nemesis.png" alt="" width="105" height="155" id="nemesisimg">
+                <div id="enemy-health-container">
+                    <div id="enemy-hp">HP: <span id="enemy-hp-value"></span></div>
+                    <progress value="300" max="300" id="enemyHealth"></progress>
+                </div>
+                  <img src="./public/images/nemesis.png" alt="" width="105" height="155" id="nemesisimg">
             </div>
         </div>
 
