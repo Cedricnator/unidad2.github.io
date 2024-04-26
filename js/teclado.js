@@ -1,7 +1,8 @@
+
+// Inicialización de variables
 const d = document;
 let x = 0, y = 0;
 let x2 = 0, y2 = 0;
-
 let keysPressed = {};
 
 window.addEventListener('keydown', function(event) {
@@ -12,6 +13,7 @@ window.addEventListener('keyup', function(event) {
     keysPressed[event.keyCode] = false;
 });
 
+// Mover el primer personaje
 export function moveBall( ball, stage){
 
     const $ball      = d.querySelector(ball)
@@ -35,7 +37,7 @@ export function moveBall( ball, stage){
     move($ball, x, y);
 }   
 
-
+// Mover el segundo personaje
 export const moveBall2 = ( ball2, stage) => {
     const $ball2     = d.querySelector(ball2)
     const $stage     = d.querySelector(stage)
@@ -58,6 +60,7 @@ export const moveBall2 = ( ball2, stage) => {
     move($ball2, x2, y2);
 }
 
+// Boolean, true si se puede atacar en una distancia menor a 80
 export function attackIfClose(ball1, ball2) {
     const $ball1 = d.querySelector(ball1);
     const $ball2 = d.querySelector(ball2);
@@ -70,6 +73,7 @@ export function attackIfClose(ball1, ball2) {
     return distance < 80
 }
 
+// Transicion de los elementos, movimiento.
 const move = (ball, x, y) => {
     ball.style.transform = `translate(${ x * 10 }px, ${ y * 10 }px)`;
 }
