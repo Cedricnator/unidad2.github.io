@@ -59,9 +59,6 @@ export const moveBall2 = ( ball2, stage) => {
     move($ball2, x2, y2);
 }
 
-
-
-
 export function attackIfClose(ball1, ball2) {
     const $ball1 = d.querySelector(ball1);
     const $ball2 = d.querySelector(ball2);

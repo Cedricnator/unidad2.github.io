@@ -10,7 +10,6 @@ const audio     = new Audio('../public/Audio.mp3');
 audio.loop      = true;
 let gameOver    = false;
 
-
 // Constantes
 const BALL_CLASS          = '.ball';
 const STAGE_CLASS         = '.stage';
@@ -34,34 +33,25 @@ document.addEventListener("keydown", (e) => {
 
   if (isEnableToAtack) {
     updateBorderColor(BALL_CLASS, 'red');
-
     updateBorderColor(BALL2_CLASS, 'red');
-
-    document.addEventListener("keyup", function (event) {
-      if (isEnableToAtack && event.key === "x") {
-        checkGameStatus(gameOver, character, nemesis);
-
-        character.atack(nemesis, 30)
-
-        addAndRemoveClass(NEMESIS_IMG_ID, 'atacked', 500);
-
-        updateHealth(ENEMY_HEALTH_ID, nemesis.getHealth());
-
-      } else if (isEnableToAtack && event.key === "n") {
-        checkGameStatus(gameOver, character, nemesis);
-
-        nemesis.atack(character, 5)
-
-        addAndRemoveClass(CHARACTER_IMG_ID, 'atacked', 500);
-
-        updateHealth(CHARACTER_HEALTH_ID, character.getHealth());
-      }
-    });
-
   } else {
     updateBorderColor(BALL_CLASS, 'gold');
-
     updateBorderColor(BALL2_CLASS, 'gold');
+  }
+});
 
+document.addEventListener("keydown", function (event) {
+  const isEnableToAtack = attackIfClose(BALL_CLASS, BALL2_CLASS);
+
+  if (isEnableToAtack && event.key === "x") {
+    checkGameStatus(gameOver, character, nemesis);
+    character.atack(nemesis, 30)
+    addAndRemoveClass(NEMESIS_IMG_ID, 'atacked', 500);
+    updateHealth(ENEMY_HEALTH_ID, nemesis.getHealth());
+  } else if (isEnableToAtack && event.key === "n") {
+    checkGameStatus(gameOver, character, nemesis);
+    nemesis.atack(character, 5)
+    addAndRemoveClass(CHARACTER_IMG_ID, 'atacked', 500);
+    updateHealth(CHARACTER_HEALTH_ID, character.getHealth());
   }
 });
