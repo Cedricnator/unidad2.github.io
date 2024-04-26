@@ -1,4 +1,4 @@
-
+// Cambia el color de cada personaje si está cerca de atacar
 export function updateBorderColor(elementClass, color) {
   if(elementClass && elementClass.startsWith('.')) {
     elementClass = elementClass.slice(1);
@@ -8,11 +8,13 @@ export function updateBorderColor(elementClass, color) {
     element.style.borderColor = color;
   }
 }
-  
+
+// Actualizar la barra de vida en la interfaz
 export function updateHealth(elementId, health) {
   document.getElementById(elementId).value = health;
 }
 
+// Agregar y remover una clase a un elemento
 export function addAndRemoveClass(elementId, className, timeout) {
   const element = document.getElementById(elementId);
   element.classList.add(className);
