@@ -20,12 +20,22 @@ const CHARACTER_IMG_ID    = 'characterimg';
 const ENEMY_HEALTH_ID     = 'enemyHealth';
 const CHARACTER_HEALTH_ID = 'characterHealth';
 
+
+
 // Reproducir música
 startAudio(audio, audioStarted);
 
 // Mover los personajes y atacar
 const game = () => {
   let gameOver = false;
+
+  // Obtener vida personajes
+  character.getHealth();
+  nemesis.getHealth();
+
+  // Actualizar la vida inicial en la interfaz
+  updateHealth(ENEMY_HEALTH_ID, nemesis.getHealth(), 'enemy-hp-value');
+  updateHealth(CHARACTER_HEALTH_ID, character.getHealth(), 'character-hp-value');
 
   // Se mueven los personajes
   document.addEventListener("keydown", (e) => {
@@ -55,13 +65,13 @@ const game = () => {
       gameOver = checkGameStatus(gameOver, character, nemesis);
       character.atack(nemesis, 30)
       addAndRemoveClass(NEMESIS_IMG_ID, 'atacked', 500);
-      updateHealth(ENEMY_HEALTH_ID, nemesis.getHealth());
+      updateHealth(ENEMY_HEALTH_ID, nemesis.getHealth(), 'enemy-hp-value');
     } else if (isEnableToAtack && event.key === "n") {
       gameOver = checkGameStatus(gameOver, character, nemesis);
       nemesis.atack(character, 5)
       addAndRemoveClass(CHARACTER_IMG_ID, 'atacked', 500);
-      updateHealth(CHARACTER_HEALTH_ID, character.getHealth());
-    }
+      updateHealth(CHARACTER_HEALTH_ID, character.getHealth(), 'character-hp-value');
+  }
   });
 }
 
