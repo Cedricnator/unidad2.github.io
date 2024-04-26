@@ -59,10 +59,11 @@ nav {
 
 .ball, .ball2 {
     margin: auto;
-    width: 4rem;
-    height: 4rem;
+    width: 6rem;
+    height: 4.5rem;
     border-radius: 50%;
-    background-color: var(--main-color);
+    border: 0.1rem solid gold;
+    box-sizing: border-box; /* Asegura que el ancho y la altura incluyan el borde y el padding */
 }
 
 

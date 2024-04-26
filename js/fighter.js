@@ -9,12 +9,12 @@ export class Fighter {
     }
 
     isAlive(){
-        return this.health > 0;
+        return this.life > 0;
     }
 
-    status() {
-        return `${this.name} - HP ${this.health}/${this.maxhealth}`;
-    }
+    // status() {
+    //     return `${this.name} - HP ${this.health}/${this.maxhealth}`;
+    // }
 
     isInRange(target){  
         const dx = this.x - target.getX();
