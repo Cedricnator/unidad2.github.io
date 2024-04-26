@@ -1,41 +1,43 @@
-  // TODO: Agregar PowerUps, Agregar Ataque critico, Agregar retorno de vida, Agregar sprites, Agregar sonidos, Agregar animaciones.
-  // TODO: Agregar armas, ataque, ataque especial, defensa, vida, velocidad, etc.
-  // TODO: Considerar agregar un menu de seleccion tanto de personaje como de enemigo.
+import { checkGameStatus } from './gameLogic.js';
+import { Fighter }         from './fighter.js';
+import { 
+  attackIfClose,
+  moveBall, 
+  moveBall2, 
+} from './teclado.js'
 
-  import { moveCharacterByCoords } from './moveCharacter.js'
-  import { Fighter } from './fighter.js';
+// Inicialización de los personajes
+const character = new Fighter("fighter", 300, 0, 0, 10);
+const nemesis   = new Fighter("nemesis", 300, 0, 0, 10);
+let gameOver = false;
 
-  const combatZone = document.getElementById("ring");
+document.addEventListener("keydown", (e) => {
+    moveBall('.ball', '.stage');
+    moveBall2('.ball2', '.stage');
 
-  const character = new Fighter("character", 100);
-  const nemesis = new Fighter("enemy", 100);
-
-
-  character.setDocumentById();
-  nemesis.setDocumentById();
- 
-  const coords1 = [0, 0]; // x, y
-  const coords2 = [0, 0]; // x, y
-
-  const eventsCharacterKey = ["ArrowRight", "ArrowLeft", "ArrowUp", "ArrowDown"];
-  const eventsNemesisKey = ["d", "a", "w", "s"];
-
-  document.addEventListener("keydown", function (event) {
-      if (event.key === "x") {
-        character.atack(nemesis)
-        document.getElementById("enemyHealth").value = nemesis.getHealth();
-
-      } else if (event.key === "n") {
-        nemesis.atack(character)
-        document.getElementById("characterHealth").value = character.getHealth();
-      }
-  });
-
-  // Character
-  moveCharacterByCoords(coords1, eventsCharacterKey, character.getId(), combatZone);
-
-  // Nemesis
-  moveCharacterByCoords(coords2, eventsNemesisKey, nemesis.getId(), combatZone);
-
-  document.getElementById("characterHealth").value = character.getHealth();
-  document.getElementById("enemyHealth").value = nemesis.getHealth();
+    const isEnableToAtack = attackIfClose(".ball", ".ball2");
+    console.log(isEnableToAtack)
+    if(isEnableToAtack){
+        document.getElementById("ball").style.borderColor  = "red";
+        document.getElementById("ball2").style.borderColor = "red";
+        
+        document.addEventListener("keyup", function (event) {
+            if (isEnableToAtack && event.key === "x") {
+              checkGameStatus(gameOver, character, nemesis);
+              character.atack(nemesis, 30)
+              document.getElementById("nemesisimg").classList.add("atacked");
+              document.getElementById("enemyHealth").value = nemesis.getHealth();
+              setTimeout(() => document.getElementById("nemesisimg").classList.remove("atacked"), 500);
+            } else if (isEnableToAtack && event.key === "n") {
+              checkGameStatus(gameOver, character, nemesis);
+              nemesis.atack(character, 5)
+              document.getElementById("characterimg").classList.add("atacked");              
+              document.getElementById("characterHealth").value = character.getHealth();
+              setTimeout(() => document.getElementById("characterimg").classList.remove("atacked"), 500);
+            }
+        });
+    } else {
+      document.getElementById("ball").style.borderColor = "gold";
+      document.getElementById("ball2").style.borderColor = "gold";
+    }
+});
