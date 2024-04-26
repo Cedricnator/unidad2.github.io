@@ -4,31 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="./css/styles.css">
+    <link rel="stylesheet" href="./css/styless.css">
 </head>
 <body>
-    <h1>Welcome</h1>
-
-    <div class="characters-info">
-        <div class="profile-with-health-bar">
-            <img src="./public/images/character.png" alt="" width="105" height="155">
-             <progress value="100" max="100" id="characterHealth"></progress>
+    <nav class="">FIGHT GAME</nav>
+    <section id="seccion2" class="section" data-scroll-spy>
+        <div class="characters-info">
+            <div class="profile-with-health-bar">
+                <img src="./public/images/character.png" alt="" width="105" height="155" id="characterimg">
+                 <progress value="300" max="300" id="characterHealth"></progress>
+            </div>
+    
+            <div class="profile-with-health-bar">
+                <progress value="300" max="300" id="enemyHealth" id="nemesisHealth"></progress>
+                <img src="./public/images/nemesis.png" alt="" width="105" height="155" id="nemesisimg">
+            </div>
         </div>
 
-        <div class="profile-with-health-bar">
-            <progress value="100" max="100" id="enemyHealth" id="nemesisHealth"></progress>
-            <img src="./public/images/nemesis.png" alt="" width="105" height="155">
-        </div>
+        <article class="stage">
+            <img class="ball"  id="ball"  src="./public/images/P1.png">
+            <img class="ball2" id="ball2" src="./public/images/P2.png">
+        </article>
 
-    </div>
-   
-    <div class="center-container">
-        <div class="container" id="ring">
-            <div id="character">a</div>Ñ
-            <div id="enemy">b</div>
-        </div>
-    </div>
-
+    </section>
     <script type="module" src="./js/index.js"></script>
 </body>
 </html>
