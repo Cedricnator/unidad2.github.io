@@ -41,7 +41,6 @@ export const moveBall2 = ( ball2, stage) => {
     const $stage     = d.querySelector(stage)
     const limitBall  = $ball2.getBoundingClientRect();
     const limitStage = $stage.getBoundingClientRect(); 
-    console.log(keysPressed)
     
     if (keysPressed[38] && limitBall.top > limitStage.top) {
         y2--;
@@ -58,9 +57,6 @@ export const moveBall2 = ( ball2, stage) => {
 
     move($ball2, x2, y2);
 }
-
-
-
 
 export function attackIfClose(ball1, ball2) {
     const $ball1 = d.querySelector(ball1);

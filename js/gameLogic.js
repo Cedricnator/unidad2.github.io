@@ -1,11 +1,11 @@
 
 export const checkGameStatus = (gameOver, enemy, hero) => {
     if (!enemy.isAlive()) {
-        alert("You win!");
+        alert("The CHARACTER1 won! Game Over!");
         gameOver = true;
     } else {
         if (!hero.isAlive()) {
-            alert("You lose! Game Over!");
+            alert("The CHARACTER2 won! Game Over!");
             gameOver = true;
         }
     }

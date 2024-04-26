@@ -107,6 +107,10 @@ nav {
     animation: shake 0.5s;
 }
 
+progress{
+    width: 20rem;
+}
+
 @keyframes shake {
     0% { transform: translate(0, 0); }
     50% { transform: translate(-5px, 0); }
