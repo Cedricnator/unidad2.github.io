@@ -1,14 +1,16 @@
 import { checkGameStatus } from './gameLogic.js';
 import { Fighter }         from './fighter.js';
-import { updateBorderColor, addAndRemoveClass, updateHealth, } from './helpers.js';
+import { updateBorderColor, addAndRemoveClass, updateHealth, } from '../utils/interface-helper.js';
 import { attackIfClose, moveBall, moveBall2, }                 from './teclado.js'
+import { startAudio } from '../utils/audio-reproducer.js';
 
 // Inicialización de los personajes
-const character = new Fighter("fighter", 300);
-const nemesis   = new Fighter("nemesis", 300);
-const audio     = new Audio('../public/Audio.mp3');
-audio.loop      = true;
-let gameOver    = false;
+const character   = new Fighter("fighter", 300);
+const nemesis     = new Fighter("nemesis", 300);
+const audio       = new Audio('../public/Audio.mp3');
+audio.loop        = true;
+let audioStarted  = false;
+let gameOver      = false;
 
 // Constantes
 const BALL_CLASS          = '.ball';
@@ -19,9 +21,8 @@ const CHARACTER_IMG_ID    = 'characterimg';
 const ENEMY_HEALTH_ID     = 'enemyHealth';
 const CHARACTER_HEALTH_ID = 'characterHealth';
 
-// audio.addEventListener('canplaythrough', function() {
-//   audio.play();
-// }, false);
+// Se reproduce la nusica al presionar cualquier tecla
+startAudio(audio, audioStarted);
 
 // Eventos de teclado
 document.addEventListener("keydown", (e) => {
@@ -29,7 +30,6 @@ document.addEventListener("keydown", (e) => {
   moveBall2(BALL2_CLASS, STAGE_CLASS);
 
   const isEnableToAtack = attackIfClose(BALL_CLASS, BALL2_CLASS);
-  console.log(isEnableToAtack)
 
   if (isEnableToAtack) {
     updateBorderColor(BALL_CLASS, 'red');

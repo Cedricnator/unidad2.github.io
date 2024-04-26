@@ -41,7 +41,6 @@ export const moveBall2 = ( ball2, stage) => {
     const $stage     = d.querySelector(stage)
     const limitBall  = $ball2.getBoundingClientRect();
     const limitStage = $stage.getBoundingClientRect(); 
-    console.log(keysPressed)
     
     if (keysPressed[38] && limitBall.top > limitStage.top) {
         y2--;
