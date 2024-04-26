@@ -7,9 +7,16 @@ import {
 } from './teclado.js'
 
 // Inicialización de los personajes
-const character = new Fighter("fighter", 300, 0, 0, 10);
-const nemesis   = new Fighter("nemesis", 300, 0, 0, 10);
-let gameOver = false;
+const character = new Fighter("fighter", 300);
+const nemesis   = new Fighter("nemesis", 300);
+const audio     = new Audio('../public/Audio.mp3');
+audio.loop      = true;
+let gameOver    = false;
+
+// audio.addEventListener('canplaythrough', function() {
+//   audio.play();
+// }, false);
+
 
 document.addEventListener("keydown", (e) => {
     moveBall('.ball', '.stage');
