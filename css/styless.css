@@ -18,6 +18,7 @@ html {
 body {
     margin: 0;
     overflow-x: hidden;
+    background-color: #2222;
 }
   
 
@@ -53,7 +54,8 @@ nav {
 .stage {
     display: flex;
     min-height: 50vh;
-    background-color: var(--second-color);
+    border: 1rem solid #222;
+    background-image: url("../public/images/area.jpg");
 }
 
 
@@ -77,8 +79,6 @@ nav {
 .characters-info {
     display: flex;
     justify-content: space-between;
-    margin-left: 3rem;
-    margin-right: 3rem;
 }
 
 .center-container{

@@ -10,7 +10,6 @@ const nemesis     = new Fighter("nemesis", 300);
 const audio       = new Audio('../public/Audio.mp3');
 audio.loop        = true;
 let audioStarted  = false;
-let gameOver      = false;
 
 // Constantes
 const BALL_CLASS          = '.ball';
@@ -26,10 +25,7 @@ startAudio(audio, audioStarted);
 
 // Mover los personajes y atacar
 const game = () => {
-  // El juego a terminado
-  if(gameOver){ 
-    return window.alert("¡El juego ha terminado! \n\nPara seguir jugando reinicia la página!");
-  }
+  let gameOver = false;
 
   // Se mueven los personajes
   document.addEventListener("keydown", (e) => {
@@ -49,15 +45,19 @@ const game = () => {
   
   // Solo ataca si está cerca
   document.addEventListener("keydown", function (event) {
+    // El juego a terminado
+    if(gameOver === true){ 
+      return window.alert("¡El juego ha terminado! \n\nPara seguir jugando reinicia la página!");
+    }
     const isEnableToAtack = attackIfClose(BALL_CLASS, BALL2_CLASS);
   
     if (isEnableToAtack && event.key === "x") {
-      checkGameStatus(gameOver, character, nemesis);
+      gameOver = checkGameStatus(gameOver, character, nemesis);
       character.atack(nemesis, 30)
       addAndRemoveClass(NEMESIS_IMG_ID, 'atacked', 500);
       updateHealth(ENEMY_HEALTH_ID, nemesis.getHealth());
     } else if (isEnableToAtack && event.key === "n") {
-      checkGameStatus(gameOver, character, nemesis);
+      gameOver = checkGameStatus(gameOver, character, nemesis);
       nemesis.atack(character, 5)
       addAndRemoveClass(CHARACTER_IMG_ID, 'atacked', 500);
       updateHealth(CHARACTER_HEALTH_ID, character.getHealth());
